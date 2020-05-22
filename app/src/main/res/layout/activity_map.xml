@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/map"
+    android:orientation="vertical"
+    tools:context=".MapActivity">
+
+
+    <TextView
+        android:id="@+id/buoy1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="经:121.910956°\\纬:30.878932°"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/buoy2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="85dp"
+        android:layout_marginBottom="0dp"
+        android:text="经:121.909294°\\纬:30.877653°"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bilv"
+    tools:context=".Buoy2Activity">
+
+    <TextView
+        android:id="@+id/tv_column"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="35dp"
+        android:textSize="50sp"/>
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignLeft="@+id/tv_column"
+        android:layout_below="@+id/tv_column"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/tv_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/iv_icon"
+        android:layout_below="@+id/iv_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_icon"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@id/iv_icon"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="22sp"/>
+        <TextView
+            android:id="@+id/tv_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/tv_pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_fsx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="风速||向"/>
+
+        <Button
+            android:id="@+id/btn_sw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="水温"/>
+        <Button
+            android:id="@+id/btn_qj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="倾角"/>
+
+        <Button
+            android:id="@+id/btn_dl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电量"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
