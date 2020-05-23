@@ -54,13 +54,13 @@ public class JsonParse {
         return sb.toString();
     }
 
-    //解析json文件返回天气信息的集合
+    //解析json文件返回水文信息的集合
     public List<WeatherInfo> getInfosFromJson(Context context){
         List<WeatherInfo> weatherInfos=new ArrayList<>();
         InputStream is=null;
         try {
             //从项目中的assets文件中获取json文件
-            is=context.getResources().getAssets().open("weather.json");
+            is=context.getResources().getAssets().open("buoy1.json");
             String json=read(is);       //获取json数据
             Gson gson=new Gson();       //创建Gson对象
             //创建一个TypeToken的匿名子类对象，并调用该对象的getType()方法

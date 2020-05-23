@@ -28,7 +28,6 @@ public class LoginActivity extends BaseActivity {
 
     private CheckBox rememberPass;
 
-    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +67,10 @@ public class LoginActivity extends BaseActivity {
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
-                    //自定义Toast显示位置
-                    toast = Toast.makeText(getApplicationContext(), "点击对应浮标按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 15, 500);
-                    toast.show();
+//                    //自定义Toast显示位置，一定要在类的首部定义Toast变量。
+//                    toast = Toast.makeText(getApplicationContext(), "点击对应浮标按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
+//                    toast.setGravity(Gravity.CENTER, 15, 500);
+//                    toast.show();
                     //默认Toast显示
                     //Toast.makeText(LoginActivity.this,"点击对应浮标按钮，即可查看相关水文数据！",Toast.LENGTH_SHORT).show();
 

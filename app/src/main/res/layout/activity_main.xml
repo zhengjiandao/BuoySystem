@@ -44,14 +44,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="浮标1"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/btn_buoy2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="浮标2"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 </RelativeLayout>

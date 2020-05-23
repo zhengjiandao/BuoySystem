@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,10 @@ public class MainActivity extends BaseActivity {
                 startActivityForResult(intent,1);
             }
         });
+        //自定义Toast显示位置，一定要在类的首部定义Toast变量。
+        toast = Toast.makeText(getApplicationContext(), "点击对应浮标按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 15, 500);
+        toast.show();
     }
 
     @Override

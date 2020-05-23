@@ -6,6 +6,7 @@ import android.os.Bundle;
 //天气信息导入包**************************
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,18 +18,11 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-//public class BuoyActivity extends AppCompatActivity {
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_buoy);
-//    }
-//}
 public class BuoyActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView tvColumn,tvWeather,tvTemp,tvWind,tvPm;
+    private TextView b1Wind,b1Temp,b1Dip,b1Power,b1Time;
     private ImageView ivIcon;
-    private List<WeatherInfo> infoList;//天气预报数据集合
+    private List<WeatherInfo> infoList;//水文信息数据集合
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +30,17 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_buoy);
         infoList=JsonParse.getInstance().getInfosFromJson(BuoyActivity.this);
         initView();
-        getColumnData("风速||向");//第一次进入应用时，显示风速信息
+        getTimeData("00:00");//第一次进入应用时，显示00:00时刻水文信息
         //下面if条件判断用于标题栏返回键操作
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        //自定义Toast显示位置,一定要在类的首部定义Toast变量。
+        toast = Toast.makeText(getApplicationContext(), "点击并左右滑动底端时刻表，即可显示对应时刻水文信息！",Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 15, 500);
+        toast.show();
     }
 
     @Override
@@ -56,41 +54,66 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView(){
-        tvColumn=(TextView) findViewById(R.id.tv_column);
-        tvWeather=(TextView) findViewById(R.id.tv_weather);
-        tvTemp=(TextView) findViewById(R.id.tv_temp);
-        tvWind=(TextView) findViewById(R.id.tv_wind);
-        tvPm=(TextView) findViewById(R.id.tv_pm);
         ivIcon=(ImageView) findViewById(R.id.iv_icon);
-        findViewById(R.id.btn_sw).setOnClickListener(this);
-        findViewById(R.id.btn_fsx).setOnClickListener(this);
-        findViewById(R.id.btn_qj).setOnClickListener(this);
-        findViewById(R.id.btn_dl).setOnClickListener(this);
+        b1Wind=(TextView) findViewById(R.id.b1_wind);
+        b1Temp=(TextView) findViewById(R.id.b1_temp);
+        b1Dip=(TextView) findViewById(R.id.b1_dip);
+        b1Power=(TextView) findViewById(R.id.b1_power);
+        b1Time=(TextView)  findViewById(R.id.b1_time);
+        findViewById(R.id.btn_00).setOnClickListener(this);
+        findViewById(R.id.btn_01).setOnClickListener(this);
+        findViewById(R.id.btn_02).setOnClickListener(this);
+        findViewById(R.id.btn_03).setOnClickListener(this);
+        findViewById(R.id.btn_04).setOnClickListener(this);
+        findViewById(R.id.btn_05).setOnClickListener(this);
+        findViewById(R.id.btn_06).setOnClickListener(this);
+        findViewById(R.id.btn_07).setOnClickListener(this);
+        findViewById(R.id.btn_08).setOnClickListener(this);
+        findViewById(R.id.btn_09).setOnClickListener(this);
+        findViewById(R.id.btn_10).setOnClickListener(this);
+        findViewById(R.id.btn_11).setOnClickListener(this);
+        findViewById(R.id.btn_12).setOnClickListener(this);
+        findViewById(R.id.btn_13).setOnClickListener(this);
+        findViewById(R.id.btn_14).setOnClickListener(this);
+        findViewById(R.id.btn_15).setOnClickListener(this);
+        findViewById(R.id.btn_16).setOnClickListener(this);
+        findViewById(R.id.btn_17).setOnClickListener(this);
+        findViewById(R.id.btn_18).setOnClickListener(this);
+        findViewById(R.id.btn_19).setOnClickListener(this);
+        findViewById(R.id.btn_20).setOnClickListener(this);
+        findViewById(R.id.btn_21).setOnClickListener(this);
+        findViewById(R.id.btn_22).setOnClickListener(this);
+        findViewById(R.id.btn_23).setOnClickListener(this);
     }
     /**
      * 设置界面数据
      */
     private void  setData(WeatherInfo info){
         if(info==null) return;
-        tvColumn.setText(info.getColumn());
-        tvWeather.setText(info.getWeather());
-        tvTemp.setText(info.getTemp());
-        tvWind.setText("风力："+info.getWind());
-        tvPm.setText("PM:"+info.getPm());
-        if(("晴转多云").equals(info.getWeather())){
+        b1Wind.setText("风速||向: "+info.getWind());
+        b1Temp.setText("水温: "+info.getTemp());
+        b1Dip.setText("倾角："+info.getDip());
+        b1Power.setText("电量:"+info.getPower());
+        b1Time.setText(info.getTime());//此处time来源于b2time
+        if(("00:00").equals(info.getTime())||("01:00").equals(info.getTime())||("02:00").equals(info.getTime())||("03:00").equals(info.getTime())
+                ||("04:00").equals(info.getTime())||("20:00").equals(info.getTime())|| ("21:00").equals(info.getTime())||("22:00").equals(info.getTime())
+                ||("23:00").equals(info.getTime())){
+            ivIcon.setImageResource(R.drawable.moon);
+        }else if(("05:00").equals(info.getTime())||("06:00").equals(info.getTime())||("07:00").equals(info.getTime())||("19:00").equals(info.getTime())
+                ||("18:00").equals(info.getTime())){
             ivIcon.setImageResource(R.drawable.cloud_sun);
-        }else if(("多云").equals(info.getWeather())){
-            ivIcon.setImageResource(R.drawable.clouds);
-        }else if(("晴").equals(info.getWeather())){
+        }else if(("08:00").equals(info.getTime())||("09:00").equals(info.getTime())||("10:00").equals(info.getTime())||("11:00").equals(info.getTime())
+                ||("12:00").equals(info.getTime())||("13:00").equals(info.getTime())||("14:00").equals(info.getTime())||("15:00").equals(info.getTime())
+                ||("16:00").equals(info.getTime())||("17:00").equals(info.getTime())){
             ivIcon.setImageResource(R.drawable.sun);
         }
     }
     /**
-     * 根据信息栏获取对应的天气信息
+     * 根据浮标号获取对应的水文信息
      */
-    private void getColumnData(String column){
+    private void getTimeData(String time){
         for(WeatherInfo info:infoList){
-            if(info.getColumn().equals(column)){
+            if(info.getTime().equals(time)){
                 setData(info);
             }
         }
@@ -98,18 +121,79 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v){//按钮的点击事件
         switch (v.getId()){
-            case R.id.btn_sw://水温按钮的点击事件
-                getColumnData("水温");
+            case R.id.btn_00://00:00时刻按钮的点击事件
+                getTimeData("00:00");
                 break;
-            case R.id.btn_fsx://风速/向按钮的点击事件
-                getColumnData("风速||向");
+            case R.id.btn_01://01:00时刻按钮的点击事件
+                getTimeData("01:00");
                 break;
-            case R.id.btn_qj://浮标倾角按钮的点击事件
-                getColumnData("倾角");
+            case R.id.btn_02://02:00时刻按钮的点击事件
+                getTimeData("02:00");
                 break;
-            case R.id.btn_dl://浮标电量按钮的点击事件
-                getColumnData("电量");
+            case R.id.btn_03://03:00时刻按钮的点击事件
+                getTimeData("03:00");
                 break;
+            case R.id.btn_04://04:00时刻按钮的点击事件
+                getTimeData("04:00");
+                break;
+            case R.id.btn_05://05:00时刻按钮的点击事件
+                getTimeData("05:00");
+                break;
+            case R.id.btn_06://06:00时刻按钮的点击事件
+                getTimeData("06:00");
+                break;
+            case R.id.btn_07://07:00时刻按钮的点击事件
+                getTimeData("07:00");
+                break;
+            case R.id.btn_08://08:00时刻按钮的点击事件
+                getTimeData("08:00");
+                break;
+            case R.id.btn_09://09:00时刻按钮的点击事件
+                getTimeData("09:00");
+                break;
+            case R.id.btn_10://10:00时刻按钮的点击事件
+                getTimeData("10:00");
+                break;
+            case R.id.btn_11://11:00时刻按钮的点击事件
+                getTimeData("11:00");
+                break;
+            case R.id.btn_12://12:00时刻按钮的点击事件
+                getTimeData("12:00");
+                break;
+            case R.id.btn_13://13:00时刻按钮的点击事件
+                getTimeData("13:00");
+                break;
+            case R.id.btn_14://14:00时刻按钮的点击事件
+                getTimeData("14:00");
+                break;
+            case R.id.btn_15://15:00时刻按钮的点击事件
+                getTimeData("15:00");
+                break;
+            case R.id.btn_16://16:00时刻按钮的点击事件
+                getTimeData("16:00");
+                break;
+            case R.id.btn_17://17:00时刻按钮的点击事件
+                getTimeData("17:00");
+                break;
+            case R.id.btn_18://18:00时刻按钮的点击事件
+                getTimeData("18:00");
+                break;
+            case R.id.btn_19://19:00时刻按钮的点击事件
+                getTimeData("19:00");
+                break;
+            case R.id.btn_20://20:00时刻按钮的点击事件
+                getTimeData("20:00");
+                break;
+            case R.id.btn_21://21:00时刻按钮的点击事件
+                getTimeData("22:00");
+                break;
+            case R.id.btn_22://22:00时刻按钮的点击事件
+                getTimeData("22:00");
+                break;
+            case R.id.btn_23://23:00时刻按钮的点击事件
+                getTimeData("23:00");
+                break;
+
         }
     }
 }

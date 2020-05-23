@@ -88,7 +88,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-            android:text="登录"/>
+            android:text="登录"
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/logoff"
@@ -96,7 +97,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#DB7093"
-            android:text="退出" />
+            android:text="退出"
+            android:textSize="20sp"/>
     </LinearLayout>
 
 </LinearLayout>

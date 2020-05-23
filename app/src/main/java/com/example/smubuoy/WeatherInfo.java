@@ -1,42 +1,19 @@
 package com.example.smubuoy;
 
 public class WeatherInfo {
-    private String temp;         //温度
-    private String weather;       //天气
-    private String column;          //信息栏
-    private String pm;             //pm值
-    private String wind;           //风力
+    private String time;      //时间点
+    private String wind;         //风力
+    private String temp;         //水温
+    private String dip;          //倾角
+    private String power;       //电量
 
-    public String getTemp() {
-        return temp;
+
+    public String getTime() {
+        return time;
     }
 
-    public void setTemp(String temp) {
-        this.temp = temp;
-    }
-
-    public String getWeather() {
-        return weather;
-    }
-
-    public void setWeather(String weather) {
-        this.weather = weather;
-    }
-
-    public String getColumn() {
-        return column;
-    }
-
-    public void setColumn(String column) {
-        this.column = column;
-    }
-
-    public String getPm() {
-        return pm;
-    }
-
-    public void setPm(String pm) {
-        this.pm = pm;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getWind() {
@@ -45,5 +22,29 @@ public class WeatherInfo {
 
     public void setWind(String wind) {
         this.wind = wind;
+    }
+
+    public String getTemp() {
+        return temp;
+    }
+
+    public void setTemp(String column) {
+        this.temp = temp;
+    }
+
+    public String getDip() {
+        return dip;
+    }
+
+    public void setDip(String dip) {
+        this.dip = dip;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
     }
 }

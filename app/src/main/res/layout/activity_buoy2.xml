@@ -8,87 +8,208 @@
     tools:context=".Buoy2Activity">
 
     <TextView
-        android:id="@+id/tv_column"
+        android:id="@+id/b2_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="25dp"
         android:textSize="50sp"/>
 
     <ImageView
         android:id="@+id/iv_icon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignLeft="@+id/tv_column"
-        android:layout_below="@+id/tv_column"
-        android:layout_marginLeft="50dp"
+        android:layout_alignLeft="@+id/b2_time"
+        android:layout_below="@+id/b2_time"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="40dp"/>
 
     <TextView
-        android:id="@+id/tv_weather"
+        android:id="@+id/b2_power"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/iv_icon"
         android:layout_below="@+id/iv_icon"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="0dp"
         android:gravity="center"
-        android:textSize="18sp"/>
+        android:textSize="20sp"/>
 
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/iv_icon"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="30dp"
         android:layout_toRightOf="@id/iv_icon"
         android:gravity="center"
+        android:background="@drawable/text_view_border"
+        android:backgroundTint="@color/colorPrimary"
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/tv_temp"
+            android:id="@+id/b2_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="22sp"/>
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:textColor="#ffff"/>
         <TextView
-            android:id="@+id/tv_wind"
+            android:id="@+id/b2_dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#ffff"/>
         <TextView
-            android:id="@+id/tv_pm"
+            android:id="@+id/b2_wind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="#ffff"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_fsx"
+        android:layout_centerHorizontal="true">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="风速||向"/>
+            android:background="#4000"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_sw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="水温"/>
-        <Button
-            android:id="@+id/btn_qj"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="倾角"/>
+            <Button
+                android:id="@+id/btn_00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"/>
 
-        <Button
-            android:id="@+id/btn_dl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="电量"/>
+            <Button
+                android:id="@+id/btn_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01:00"/>
+            <Button
+                android:id="@+id/btn_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02:00"/>
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03:00"/>
+
+            <Button
+                android:id="@+id/btn_04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="04:00"/>
+            <Button
+                android:id="@+id/btn_05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="05:00"/>
+            <Button
+                android:id="@+id/btn_06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="06:00"/>
+            <Button
+                android:id="@+id/btn_07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="07:00"/>
+            <Button
+                android:id="@+id/btn_08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08:00"/>
+            <Button
+                android:id="@+id/btn_09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09:00"/>
+            <Button
+                android:id="@+id/btn_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00"/>
+            <Button
+                android:id="@+id/btn_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:00"/>
+            <Button
+                android:id="@+id/btn_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:00"/>
+            <Button
+                android:id="@+id/btn_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13:00"/>
+            <Button
+                android:id="@+id/btn_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14:00"/>
+            <Button
+                android:id="@+id/btn_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:00"/>
+            <Button
+                android:id="@+id/btn_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16:00"/>
+            <Button
+                android:id="@+id/btn_17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:00"/>
+            <Button
+                android:id="@+id/btn_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:00"/>
+            <Button
+                android:id="@+id/btn_19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19:00"/>
+            <Button
+                android:id="@+id/btn_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20:00"/>
+            <Button
+                android:id="@+id/btn_21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21:00"/>
+            <Button
+                android:id="@+id/btn_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22:00"/>
+            <Button
+                android:id="@+id/btn_23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23:00"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>
