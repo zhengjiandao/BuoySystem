@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bilv"
     tools:context=".BuoyActivity">
 
@@ -42,7 +43,7 @@
         android:layout_height="10dp"
         android:background="#4000"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linear2"
         android:orientation="horizontal"
         android:layout_below="@+id/view1"
@@ -64,6 +65,7 @@
                 android:gravity="center"
                 android:textSize="20sp"/>
             <TextView
+                android:id="@+id/linear2_1_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -78,9 +80,8 @@
             android:id="@+id/linear2_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/linear2_1"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@id/linear2_1"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="20dp"
             android:gravity="center"
             android:background="@drawable/text_view_border"
             android:backgroundTint="@color/colorPrimary"
@@ -105,12 +106,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
                 android:textSize="20sp"
                 android:textColor="#ffff"/>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/view2"
@@ -120,14 +119,15 @@
         android:layout_marginTop="20dp"
         android:background="#4000"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linear3"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view2"
         android:layout_marginTop="20dp"
-        android:layout_alignLeft="@id/linear2">
+        android:layout_alignLeft="@id/linear2"
+        android:layout_alignRight="@+id/linear2">
 
         <LinearLayout
             android:id="@+id/linear3_1"
@@ -143,6 +143,7 @@
                 android:gravity="center"
                 android:textSize="20sp"/>
             <TextView
+                android:id="@+id/linear3_1_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -157,9 +158,8 @@
             android:id="@+id/linear3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/linear3_1"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@id/linear3_1"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="20dp"
             android:gravity="center"
             android:background="@drawable/text_view_border"
             android:backgroundTint="@color/colorPrimary"
@@ -184,12 +184,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
                 android:textSize="20sp"
                 android:textColor="#ffff"/>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
