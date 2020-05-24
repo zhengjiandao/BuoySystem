@@ -1,11 +1,12 @@
 package com.example.smubuoy;
 
-public class WeatherInfo {
+public class HydrologyInfo {
     private String time;      //时间点
     private String wind;         //风力
     private String temp;         //水温
     private String dip;          //倾角
     private String power;       //电量
+    private String number;      //浮标编号
 
 
     public String getTime() {
@@ -46,5 +47,13 @@ public class WeatherInfo {
 
     public void setPower(String power) {
         this.power = power;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

@@ -18,10 +18,10 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class BuoyActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView b1Wind,b1Temp,b1Dip,b1Power,b1Time;
+public class BuoyActivity extends AppCompatActivity implements View.OnClickListener{
+    private TextView b1Wind,b1Temp,b1Dip,b1Power,b2Wind,b2Temp,b2Dip,b2Power,b2Time;
     private ImageView ivIcon;
-    private List<WeatherInfo> infoList;//水文信息数据集合
+    private List<HydrologyInfo> infoList;//水文信息数据集合
     private Toast toast;
 
     @Override
@@ -39,7 +39,7 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
         }
         //自定义Toast显示位置,一定要在类的首部定义Toast变量。
         toast = Toast.makeText(getApplicationContext(), "点击并左右滑动底端时刻表，即可显示对应时刻水文信息！",Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 15, 500);
+        toast.setGravity(Gravity.CENTER, 15, 550);
         toast.show();
     }
 
@@ -59,7 +59,11 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
         b1Temp=(TextView) findViewById(R.id.b1_temp);
         b1Dip=(TextView) findViewById(R.id.b1_dip);
         b1Power=(TextView) findViewById(R.id.b1_power);
-        b1Time=(TextView)  findViewById(R.id.b1_time);
+        b2Wind=(TextView) findViewById(R.id.b2_wind);
+        b2Temp=(TextView) findViewById(R.id.b2_temp);
+        b2Dip=(TextView) findViewById(R.id.b2_dip);
+        b2Power=(TextView) findViewById(R.id.b2_power);
+        b2Time=(TextView)  findViewById(R.id.b2_time);
         findViewById(R.id.btn_00).setOnClickListener(this);
         findViewById(R.id.btn_01).setOnClickListener(this);
         findViewById(R.id.btn_02).setOnClickListener(this);
@@ -88,13 +92,23 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 设置界面数据
      */
-    private void  setData(WeatherInfo info){
+    private void  setData(HydrologyInfo info){
         if(info==null) return;
-        b1Wind.setText("风速||向: "+info.getWind());
-        b1Temp.setText("水温: "+info.getTemp());
-        b1Dip.setText("倾角："+info.getDip());
-        b1Power.setText("电量:"+info.getPower());
-        b1Time.setText(info.getTime());//此处time来源于b2time
+
+        if(("buoy1").equals(info.getNumber())){
+            b1Wind.setText("风速||向: "+info.getWind());
+            b1Temp.setText("水温: "+info.getTemp());
+            b1Dip.setText("倾角："+info.getDip());
+            b1Power.setText("电量:"+info.getPower());
+            b2Time.setText(info.getTime());//此处time来源于b2time
+        } else if(("buoy2").equals(info.getNumber())){
+            b2Wind.setText("风速||向: "+info.getWind());
+            b2Temp.setText("水温: "+info.getTemp());
+            b2Dip.setText("倾角："+info.getDip());
+            b2Power.setText("电量:"+info.getPower());
+            b2Time.setText(info.getTime());//此处time来源于b2time
+        }
+
         if(("00:00").equals(info.getTime())||("01:00").equals(info.getTime())||("02:00").equals(info.getTime())||("03:00").equals(info.getTime())
                 ||("04:00").equals(info.getTime())||("20:00").equals(info.getTime())|| ("21:00").equals(info.getTime())||("22:00").equals(info.getTime())
                 ||("23:00").equals(info.getTime())){
@@ -112,7 +126,7 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
      * 根据浮标号获取对应的水文信息
      */
     private void getTimeData(String time){
-        for(WeatherInfo info:infoList){
+        for(HydrologyInfo info:infoList){
             if(info.getTime().equals(time)){
                 setData(info);
             }

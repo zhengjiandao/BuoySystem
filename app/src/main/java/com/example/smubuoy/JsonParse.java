@@ -55,22 +55,22 @@ public class JsonParse {
     }
 
     //解析json文件返回水文信息的集合
-    public List<WeatherInfo> getInfosFromJson(Context context){
-        List<WeatherInfo> weatherInfos=new ArrayList<>();
+    public List<HydrologyInfo> getInfosFromJson(Context context){
+        List<HydrologyInfo> hydrologyInfoInfos=new ArrayList<>();
         InputStream is=null;
         try {
             //从项目中的assets文件中获取json文件
-            is=context.getResources().getAssets().open("buoy1.json");
+            is=context.getResources().getAssets().open("buoy.json");
             String json=read(is);       //获取json数据
             Gson gson=new Gson();       //创建Gson对象
             //创建一个TypeToken的匿名子类对象，并调用该对象的getType()方法
-            Type listType=new TypeToken<List<WeatherInfo>>() {
+            Type listType=new TypeToken<List<HydrologyInfo>>() {
             }.getType();
             //把获取到的信息集合存到infoList中
-            List<WeatherInfo> infoList=gson.fromJson(json,listType);
+            List<HydrologyInfo> infoList=gson.fromJson(json,listType);
             return infoList;
         }catch (Exception e){
         }
-        return weatherInfos;
+        return hydrologyInfoInfos;
     }
 }

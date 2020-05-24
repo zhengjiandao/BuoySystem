@@ -26,29 +26,20 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button buoy1=(Button)  findViewById(R.id.btn_buoy1);
-        Button buoy2=(Button)  findViewById(R.id.btn_buoy2);
+        Button Query=(Button)  findViewById(R.id.btn_query);
         TextView view=(TextView) findViewById(R.id.view);
         view.setBackgroundResource(R.drawable.text_view_border);//给TextView设置透明背景、圆角边框
-        //buoy1.setBackgroundColor(Color.parseColor("#B0C4DE"));//自定代码设置按钮背景色
-        buoy1.setBackgroundResource(R.drawable.text_view_border);
-        buoy2.setBackgroundResource(R.drawable.text_view_border);
-        buoy1.setOnClickListener(new View.OnClickListener() {
+        //Query.setBackgroundColor(Color.parseColor("#B0C4DE"));//自定代码设置按钮背景色
+        Query.setBackgroundResource(R.drawable.text_view_border);
+        Query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,BuoyActivity.class);
                 startActivityForResult(intent,1);
             }
         });
-        buoy2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Buoy2Activity.class);
-                startActivityForResult(intent,1);
-            }
-        });
         //自定义Toast显示位置，一定要在类的首部定义Toast变量。
-        toast = Toast.makeText(getApplicationContext(), "点击对应浮标按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
+        toast = Toast.makeText(getApplicationContext(), "点击数据查询按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 15, 500);
         toast.show();
     }
