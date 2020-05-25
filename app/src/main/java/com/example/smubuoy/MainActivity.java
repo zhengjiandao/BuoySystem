@@ -27,10 +27,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button Query=(Button)  findViewById(R.id.btn_query);
+        Button Gps=(Button) findViewById(R.id.btn_gps);
         TextView view=(TextView) findViewById(R.id.view);
         view.setBackgroundResource(R.drawable.text_view_border);//给TextView设置透明背景、圆角边框
         //Query.setBackgroundColor(Color.parseColor("#B0C4DE"));//自定代码设置按钮背景色
-        Query.setBackgroundResource(R.drawable.text_view_border);
+        Query.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
         Query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,8 +39,16 @@ public class MainActivity extends BaseActivity {
                 startActivityForResult(intent,1);
             }
         });
+        Gps.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
+        Gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,BaiduMapActivity.class);
+                startActivityForResult(intent,1);
+            }
+        });
         //自定义Toast显示位置，一定要在类的首部定义Toast变量。
-        toast = Toast.makeText(getApplicationContext(), "点击数据查询按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
+        toast = Toast.makeText(getApplicationContext(), "点击底部按钮，即可\n查看相关信息！",Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 15, 500);
         toast.show();
     }
@@ -53,7 +62,7 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.map_item:
-                Toast.makeText(this, "您即将打开坐标地图", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "您即将个人信息中心", Toast.LENGTH_SHORT).show();
                 Intent intent1=new Intent(this,MapActivity.class);
                 //intent1.setData(Uri.parse("https://map.baidu.com/@13571410,3595029,15z"));
                 startActivity(intent1);
