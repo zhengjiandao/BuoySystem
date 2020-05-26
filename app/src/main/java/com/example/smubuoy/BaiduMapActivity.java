@@ -23,7 +23,9 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.Overlay;
 import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.TextOptions;
 import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
@@ -122,6 +124,23 @@ public class BaiduMapActivity extends AppCompatActivity {
         //在地图上添加Marker，并显示
         baiduMap.addOverlay(option1);
         baiduMap.addOverlay(option2);
+        //在图标上标记文字备注********************
+        //文字覆盖物位置坐标
+        LatLng llText1 = new LatLng(30.878902, 121.91104);
+        LatLng llText2 = new LatLng(30.876857, 121.908039);
+        //构建TextOptions对象
+        OverlayOptions mTextOptions1 = new TextOptions()
+                .text("浮标1") //文字内容
+                .bgColor(0x19e64dff) //背景色透明
+                .fontSize(36) //字号
+                .fontColor(0xFFFF00FF) //文字颜色
+                .rotate(0) //旋转角度
+                .position(llText1);
+        OverlayOptions mTextOptions2 = new TextOptions().text("浮标2").bgColor(0x19e64dff)
+                .fontSize(36).fontColor(0xFFFF00FF).rotate(0).position(llText2);
+        //在地图上显示文字覆盖物
+        Overlay mText1 = baiduMap.addOverlay(mTextOptions1);
+        Overlay mText2 = baiduMap.addOverlay(mTextOptions2);
     }
     private void requestLocation(){
         initLocation();

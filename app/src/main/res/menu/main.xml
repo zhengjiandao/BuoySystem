@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/map_item"
-        android:title="个人中心"/>
+        android:title="设备管理"/>
     <item
         android:id="@+id/remove_item"
         android:title="账户注销"/>

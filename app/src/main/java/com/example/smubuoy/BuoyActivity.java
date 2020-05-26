@@ -38,7 +38,7 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         //自定义Toast显示位置,一定要在类的首部定义Toast变量。
-        toast = Toast.makeText(getApplicationContext(), "点击并左右滑动底端时刻表，即可显示对应时刻水文信息！",Toast.LENGTH_LONG);
+        toast = Toast.makeText(getApplicationContext(), "点击并左右滑动底端时刻表，即可显示对应时刻水文信息！",Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 15, 550);
         toast.show();
     }

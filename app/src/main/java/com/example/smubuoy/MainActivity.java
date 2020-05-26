@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         //自定义Toast显示位置，一定要在类的首部定义Toast变量。
-        toast = Toast.makeText(getApplicationContext(), "点击底部按钮，即可\n查看相关信息！",Toast.LENGTH_LONG);
+        toast = Toast.makeText(getApplicationContext(), "点击底部按钮，即可\n查看相关信息！",Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 15, 500);
         toast.show();
     }
@@ -62,8 +62,8 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.map_item:
-                Toast.makeText(this, "您即将个人信息中心", Toast.LENGTH_SHORT).show();
-                Intent intent1=new Intent(this,MapActivity.class);
+                Toast.makeText(this, "您即将设备管理中心", Toast.LENGTH_SHORT).show();
+                Intent intent1=new Intent(this,DeviceActivity.class);
                 //intent1.setData(Uri.parse("https://map.baidu.com/@13571410,3595029,15z"));
                 startActivity(intent1);
                 break;
