@@ -37,6 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:background="#4000"
         android:orientation="horizontal">
 
         <Button
@@ -44,7 +45,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="水文信息"
-            android:textStyle="bold"
             android:textSize="20sp"/>
 
         <Button
@@ -52,7 +52,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GPS定位"
-            android:textStyle="bold"
             android:textSize="20sp"/>
 
     </LinearLayout>

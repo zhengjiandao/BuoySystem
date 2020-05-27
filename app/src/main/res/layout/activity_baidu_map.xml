@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".BaiduMapActivity">
+    <!--调用自定义标题栏-->
+    <com.example.smubuoy.TitleLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    </com.example.smubuoy.TitleLayout>
 <!--构建百度地图显示窗口-->
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"/>
+
 
 </LinearLayout>

@@ -28,6 +28,8 @@ public class LoginActivity extends BaseActivity {
 
     private CheckBox rememberPass;
 
+    int count=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class LoginActivity extends BaseActivity {
         login=(Button) findViewById(R.id.login);
         logoff=(Button) findViewById(R.id.logoff);
         //设置按钮背景色
-        login.setBackgroundColor(Color.parseColor("#4169E1"));
+        login.setBackgroundColor(Color.parseColor("#3CB371"));
         boolean isRemember=pref.getBoolean("remember_password",false);
         if (isRemember) {
             String account=pref.getString("account","");
@@ -67,12 +69,6 @@ public class LoginActivity extends BaseActivity {
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
-//                    //自定义Toast显示位置，一定要在类的首部定义Toast变量。
-//                    toast = Toast.makeText(getApplicationContext(), "点击对应浮标按钮，即可\n查看相关水文数据！",Toast.LENGTH_LONG);
-//                    toast.setGravity(Gravity.CENTER, 15, 500);
-//                    toast.show();
-                    //默认Toast显示
-                    //Toast.makeText(LoginActivity.this,"点击对应浮标按钮，即可查看相关水文数据！",Toast.LENGTH_SHORT).show();
 
                 }else {
                     Toast.makeText(LoginActivity.this,"账户名或密码错误！",Toast.LENGTH_SHORT).show();
@@ -83,7 +79,12 @@ public class LoginActivity extends BaseActivity {
         logoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityCollector.finishAll();
+                count++;
+                if(count==1){
+                    Toast.makeText(LoginActivity.this,"再点击一次，您将退出海大智能浮标系统！",Toast.LENGTH_SHORT).show();
+                } else if(count==2){
+                    ActivityCollector.finishAll();
+                }
             }
         });
     }

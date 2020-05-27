@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
         TextView view=(TextView) findViewById(R.id.view);
         view.setBackgroundResource(R.drawable.text_view_border);//给TextView设置透明背景、圆角边框
         //Query.setBackgroundColor(Color.parseColor("#B0C4DE"));//自定代码设置按钮背景色
-        Query.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
+        //Query.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
         Query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
                 startActivityForResult(intent,1);
             }
         });
-        Gps.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
+        //Gps.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
         Gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
         });
         //自定义Toast显示位置，一定要在类的首部定义Toast变量。
         toast = Toast.makeText(getApplicationContext(), "点击底部按钮，即可\n查看相关信息！",Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 15, 500);
+        toast.setGravity(Gravity.CENTER, 6, 500);
         toast.show();
     }
 
@@ -62,13 +62,13 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.map_item:
-                Toast.makeText(this, "您即将设备管理中心", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "设备信息填写完整后，请点击下方蓝色按钮进行保存！", Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(this,DeviceActivity.class);
                 //intent1.setData(Uri.parse("https://map.baidu.com/@13571410,3595029,15z"));
                 startActivity(intent1);
                 break;
             case  R.id.remove_item:
-                Toast.makeText(this, "您即将退出浮标系统账号", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "您即将退出浮标系统账号", Toast.LENGTH_SHORT).show();
                 Intent intent2=new Intent("com.example.broadcastbestpractice.FORCE_OFFLINE");
                 sendBroadcast(intent2);
              break;

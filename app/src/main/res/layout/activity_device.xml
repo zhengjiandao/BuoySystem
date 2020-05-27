@@ -7,10 +7,17 @@
     android:orientation="vertical"
     tools:context=".DeviceActivity">
 
+    <!--调用自定义标题栏-->
+    <com.example.smubuoy.TitleLayout2
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.smubuoy.TitleLayout2>
+
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <TextView
@@ -104,12 +111,10 @@
         android:layout_marginTop="50dp">
         <Button
             android:id="@+id/save_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/text_view_border"
-            android:textSize="25sp"
-            android:text="保存"/>
+            android:background="@drawable/save"/>
     </LinearLayout>
 
 </RelativeLayout>

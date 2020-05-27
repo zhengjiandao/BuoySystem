@@ -1,6 +1,7 @@
 package com.example.smubuoy;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 //天气信息导入包**************************
@@ -19,7 +20,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class BuoyActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView b1Wind,b1Temp,b1Dip,b1Power,b2Wind,b2Temp,b2Dip,b2Power,b2Time;
+    private TextView b1Wind,b1Direct,b1Temp,b1Dip,b1Power,b2Wind,b2Direct,b2Temp,b2Dip,b2Power,b2Time;
     private ImageView ivIcon;
     private List<HydrologyInfo> infoList;//水文信息数据集合
     private Toast toast;
@@ -31,35 +32,43 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
         infoList=JsonParse.getInstance().getInfosFromJson(BuoyActivity.this);
         initView();
         getTimeData("00:00");//第一次进入应用时，显示00:00时刻水文信息
-        //下面if条件判断用于标题栏返回键操作
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        //下面if条件判断用于默认标题栏返回键操作****************
+//        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+//        if(actionBar != null){
+//            actionBar.setHomeButtonEnabled(true);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
         //自定义Toast显示位置,一定要在类的首部定义Toast变量。
         toast = Toast.makeText(getApplicationContext(), "点击并左右滑动底端时刻表，即可显示对应时刻水文信息！",Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 15, 550);
+        toast.setGravity(Gravity.CENTER, 15, 560);
         toast.show();
+        //隐藏掉默认标题栏**************************************************
+        ActionBar actionBar=getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.hide();
+        }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish(); // 给标题栏添加back button
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//对用于默认标题栏操作******************************
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                this.finish(); // 给标题栏添加back button
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void initView(){
         ivIcon=(ImageView) findViewById(R.id.iv_icon);
         b1Wind=(TextView) findViewById(R.id.b1_wind);
+        b1Direct=(TextView) findViewById(R.id.b1_direct);
         b1Temp=(TextView) findViewById(R.id.b1_temp);
         b1Dip=(TextView) findViewById(R.id.b1_dip);
         b1Power=(TextView) findViewById(R.id.b1_power);
         b2Wind=(TextView) findViewById(R.id.b2_wind);
+        b2Direct=(TextView) findViewById(R.id.b2_direct);
         b2Temp=(TextView) findViewById(R.id.b2_temp);
         b2Dip=(TextView) findViewById(R.id.b2_dip);
         b2Power=(TextView) findViewById(R.id.b2_power);
@@ -96,13 +105,15 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
         if(info==null) return;
 
         if(("buoy1").equals(info.getNumber())){
-            b1Wind.setText("风速||向: "+info.getWind());
+            b1Wind.setText("风速: "+info.getWind());
+            b1Direct.setText("风向: "+info.getDirect());
             b1Temp.setText("水温: "+info.getTemp());
             b1Dip.setText("倾角："+info.getDip());
             b1Power.setText("电量:"+info.getPower());
             b2Time.setText(info.getTime());//此处time来源于b2time
         } else if(("buoy2").equals(info.getNumber())){
-            b2Wind.setText("风速||向: "+info.getWind());
+            b2Wind.setText("风速: "+info.getWind());
+            b2Direct.setText("风向: "+info.getDirect());
             b2Temp.setText("水温: "+info.getTemp());
             b2Dip.setText("倾角："+info.getDip());
             b2Power.setText("电量:"+info.getPower());

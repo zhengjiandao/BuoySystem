@@ -1,8 +1,9 @@
 package com.example.smubuoy;
 
 public class HydrologyInfo {
-    private String time;      //时间点
-    private String wind;         //风力
+    private String time;         //时间点
+    private String wind;         //风速
+    private String direct;       //风向
     private String temp;         //水温
     private String dip;          //倾角
     private String power;       //电量
@@ -19,6 +20,13 @@ public class HydrologyInfo {
 
     public String getWind() {
         return wind;
+    }
+
+    public void setDirect(String direct) {
+        this.direct = direct;
+    }
+    public String getDirect() {
+        return direct;
     }
 
     public void setWind(String wind) {

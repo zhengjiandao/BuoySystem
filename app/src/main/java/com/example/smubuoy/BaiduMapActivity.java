@@ -1,12 +1,20 @@
 package com.example.smubuoy;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +41,6 @@ import java.util.List;
 
 public class BaiduMapActivity extends AppCompatActivity {
     public LocationClient mLocationClient;
-    //private TextView positionText;
     private MapView mapView;
     private BaiduMap baiduMap;
     private boolean isFirstLocate=true;
@@ -41,12 +48,12 @@ public class BaiduMapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //下面if条件判断用于标题栏返回键操作*****************************
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+//        //下面if条件判断用于默认标题栏返回键操作*****************************
+//        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+//        if(actionBar != null){
+//            actionBar.setHomeButtonEnabled(true);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
 
         //下面是对百度地图的调用操作***************************************
         mLocationClient=new LocationClient(getApplicationContext());
@@ -56,7 +63,6 @@ public class BaiduMapActivity extends AppCompatActivity {
         mapView=(MapView) findViewById(R.id.bmapView);
         baiduMap=mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
-        //positionText=(TextView) findViewById(R.id.position_text_view);
         List<String> permissionList=new ArrayList<>();
         if (ContextCompat.checkSelfPermission(BaiduMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
             permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
@@ -73,17 +79,22 @@ public class BaiduMapActivity extends AppCompatActivity {
         }else {
             requestLocation();
         }
-    }
-    //重写返回栏设置函数*********************************************
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish(); // 给标题栏添加back button
-                return true;
+        //隐藏掉默认标题栏**************************************************
+        ActionBar actionBar=getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.hide();
         }
-        return super.onOptionsItemSelected(item);
     }
+    //重写默认标题栏返回设置函数*********************************************
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.back:
+//                this.finish(); // 给标题栏添加back button
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     //百度地图调用相关函数重写与创建********************************************************************
     private void navigateTo(BDLocation location){
@@ -201,4 +212,5 @@ public class BaiduMapActivity extends AppCompatActivity {
             }
         }
     }
+
 }
