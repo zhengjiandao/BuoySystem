@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,8 +29,8 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         Button Query=(Button)  findViewById(R.id.btn_query);
         Button Gps=(Button) findViewById(R.id.btn_gps);
-        TextView view=(TextView) findViewById(R.id.view);
-        view.setBackgroundResource(R.drawable.text_view_border);//给TextView设置透明背景、圆角边框
+//        TextView view=(TextView) findViewById(R.id.view);
+//        view.setBackgroundResource(R.drawable.text_view_border);//给TextView设置透明背景、圆角边框
         //Query.setBackgroundColor(Color.parseColor("#B0C4DE"));//自定代码设置按钮背景色
         //Query.setBackgroundResource(R.drawable.text_view_border);//边框圆角化
         Query.setOnClickListener(new View.OnClickListener() {
@@ -62,10 +63,9 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.map_item:
-                Toast.makeText(this, "设备信息填写完整后，请点击下方蓝色按钮进行保存！", Toast.LENGTH_LONG).show();
                 Intent intent1=new Intent(this,DeviceActivity.class);
-                //intent1.setData(Uri.parse("https://map.baidu.com/@13571410,3595029,15z"));
                 startActivity(intent1);
+                //Toast.makeText(this, "设备信息填写完整后，请点击下方蓝色按钮进行保存！", Toast.LENGTH_SHORT).show();
                 break;
             case  R.id.remove_item:
                 //Toast.makeText(this, "您即将退出浮标系统账号", Toast.LENGTH_SHORT).show();
@@ -76,6 +76,26 @@ public class MainActivity extends BaseActivity {
         }
         return true;
     }
+    //触发手机返回键两次退出整个App系统****************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onAppExit();
+            return true;
+        }
+        return false;
+    }
+
+    private long firstClick;
+    public void onAppExit() {
+        if (System.currentTimeMillis() - this.firstClick > 2000L) {
+            this.firstClick = System.currentTimeMillis();
+            Toast.makeText(this, "再按一次退出海大智能浮标系统", Toast.LENGTH_LONG).show();
+            return;
+        }
+        finish();
+    }
+
 }
 
 

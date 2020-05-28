@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -87,5 +88,25 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    //触发手机返回键两次退出整个App系统****************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onAppExit();
+            return true;
+        }
+        return false;
+    }
+
+    private long firstClick;
+    public void onAppExit() {
+        if (System.currentTimeMillis() - this.firstClick > 2000L) {
+            this.firstClick = System.currentTimeMillis();
+            Toast.makeText(this, "再按一次退出海大智能浮标系统", Toast.LENGTH_LONG).show();
+            return;
+        }
+        finish();
     }
 }

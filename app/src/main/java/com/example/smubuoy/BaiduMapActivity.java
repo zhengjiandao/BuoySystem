@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -211,6 +212,26 @@ public class BaiduMapActivity extends AppCompatActivity {
                 navigateTo(location);
             }
         }
+    }
+
+    //触发手机返回键两次退出整个App系统****************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onAppExit();
+            return true;
+        }
+        return false;
+    }
+
+    private long firstClick;
+    public void onAppExit() {
+        if (System.currentTimeMillis() - this.firstClick > 2000L) {
+            this.firstClick = System.currentTimeMillis();
+            Toast.makeText(this, "再按一次退出海大智能浮标系统", Toast.LENGTH_LONG).show();
+            return;
+        }
+        finish();
     }
 
 }

@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class DeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
+        Toast.makeText(this, "设备信息填写完整后，请点击下方蓝色按钮进行保存！", Toast.LENGTH_SHORT).show();
         //下面if条件判断用于默认标题栏返回键操作***********************************
 //        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
 //        if(actionBar != null){
@@ -74,4 +76,23 @@ public class DeviceActivity extends AppCompatActivity {
 //        }
 //        return super.onOptionsItemSelected(item);
 //    }
+    //触发手机返回键两次退出整个App系统****************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onAppExit();
+            return true;
+        }
+        return false;
+    }
+
+    private long firstClick;
+    public void onAppExit() {
+        if (System.currentTimeMillis() - this.firstClick > 2000L) {
+            this.firstClick = System.currentTimeMillis();
+            Toast.makeText(this, "再按一次退出海大智能浮标系统", Toast.LENGTH_LONG).show();
+            return;
+        }
+        finish();
+    }
 }
