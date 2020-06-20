@@ -15,7 +15,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Calendar;
+import java.util.Date;
 
+import android.text.format.Time;
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -32,7 +35,20 @@ public class BuoyActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_buoy);
         infoList=JsonParse.getInstance().getInfosFromJson(BuoyActivity.this);
         initView();
-        getTimeData("00:00");//第一次进入应用时，显示00:00时刻水文信息
+        //方法一：
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");// HH:mm:ss
+//       //获取当前时间
+//        Date date = new Date(System.currentTimeMillis());
+//        time1.setText("Date获取当前日期时间"+simpleDateFormat.format(date));
+        //方法二：
+//        Calendar c = Calendar.getInstance();
+//        int time = c.get(Calendar.HOUR_OF_DAY);
+//        String hour=String.valueOf(time);
+        //方法三：
+        Time localTime = new Time("Asia/Hong_Kong");
+        localTime.setToNow();
+        getTimeData( localTime.format("%H:00"));
+        //getTimeData("00:00");//第一次进入应用时，显示00:00时刻水文信息
         //下面if条件判断用于默认标题栏返回键操作****************
 //        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
 //        if(actionBar != null){

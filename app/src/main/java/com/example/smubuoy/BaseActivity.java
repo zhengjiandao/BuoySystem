@@ -61,8 +61,7 @@ public class BaseActivity extends AppCompatActivity{
                     Intent intent=new Intent(context,LoginActivity.class);
                     context.startActivity(intent);
                 }
-            });
-            //反面的按钮（否定）
+            });//反面的按钮（否定）
             builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

@@ -25,19 +25,11 @@ public class DeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
         Toast.makeText(this, "设备信息填写完整后，请点击下方蓝色按钮进行保存！", Toast.LENGTH_SHORT).show();
-        //下面if条件判断用于默认标题栏返回键操作***********************************
-//        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-//        if(actionBar != null){
-//            actionBar.setHomeButtonEnabled(true);
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
         //下面是设备管理信息保存操作*******************************************
         pref= PreferenceManager.getDefaultSharedPreferences(this);
         ownerEdit=(EditText)  findViewById(R.id.linear1_edit1);
         basicEdit=(EditText) findViewById(R.id.linear3_edit1);
         save=(Button) findViewById(R.id.save_text);
-        //设置按钮背景色
-       //save.setBackgroundColor(Color.parseColor("#4169E1"));
         String owner=pref.getString("owner","");
         String basic=pref.getString("basic","");
         ownerEdit.setText(owner);//记住设备所属方关键语句
